@@ -3,7 +3,7 @@ import { format } from "date-fns";
 const ClockDispaly = ({ title, date, timezone, offset }) => {
   const offsetHor = offset / 60;
   return (
-    <div>
+    <div className="border bg-gray-200 px-10 py-5">
       <h2>{`Title : ${title}`}</h2>
       <h2>{`Date: ${format(date, "dd-MM-yyyy hh:mm:ss aaaaa'm'")}`}</h2>
       <h2>{`Timezone: ${timezone}`}</h2>

@@ -20,7 +20,7 @@ const LocalClock = ({ clock, updateClock, createClock }) => {
         <>
           <ClockDispaly
             title={clock.title}
-            date={date.toString()}
+            date={date}
             timezone={timezone}
             offset={offset}
           />

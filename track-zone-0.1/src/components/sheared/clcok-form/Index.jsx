@@ -41,10 +41,12 @@ const ClockForm = ({
   };
 
   return (
-    <div>
+    <div className="bg-gray-100 px-10 py-5">
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="title">Title</label>
+        <div className="py-1">
+          <label className="font-semibold pr-3" htmlFor="title">
+            Title
+          </label>
           <input
             type="text"
             name="title"
@@ -52,10 +54,11 @@ const ClockForm = ({
             value={formValues.title}
             onChange={handleChange}
             disabled={title}
+            placeholder="My Clock"
           />
         </div>
-        <div>
-          <label>Timezone</label>
+        <div className="py-1">
+          <label className="font-semibold pr-3">Timezone</label>
           <select
             name="timezone"
             value={formValues.timezone}
@@ -69,8 +72,8 @@ const ClockForm = ({
           </select>
         </div>
         {(formValues.timezone === "UTC" || formValues.timezone === "GMT") && (
-          <div>
-            <label>Offset</label>
+          <div className="py-1">
+            <label className="font-semibold pr-3">Offset</label>
             <select
               name="offset"
               value={formValues.offset / 60}
@@ -85,7 +88,9 @@ const ClockForm = ({
           </div>
         )}
         <div>
-          <button type="submit">{edit ? "Update" : "Create"}</button>
+          <button className="py-1 px-2 border bg-blue-500 text-[#fff]" type="submit">
+            {edit ? "Update" : "Create"}
+          </button>
         </div>
       </form>
     </div>
