@@ -3,7 +3,12 @@ import { formatDistance } from "date-fns";
 import ClockAction from "../sheared/clock-actions/Index";
 import ClockDispaly from "../sheared/clock-display/Index";
 
-const ClockListItem = ({ clock, updateClock, deleteClock, localDate }) => {
+const ClockListItem = ({
+  clock,
+  updateClock,
+  deleteClock,
+  localDate,
+}) => {
   const { date } = useClock(clock.timezone, clock.offset);
 
   if (!date) return null;

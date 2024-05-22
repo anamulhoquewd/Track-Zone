@@ -12,21 +12,12 @@ const ClockAction = ({
   const [isCreate, setIsCreate] = useState(false);
   return (
     <>
-      <div className="px-10 pb-3">  
-        <button className="py-1 px-2 border" onClick={() => setIsEdit(!isEdit)}>
-          Edit
-        </button>
+      <div>
+        <button onClick={() => setIsEdit(!isEdit)}>Edit</button>
         {create ? (
-          <button
-            className="py-1 px-2 border"
-            onClick={() => setIsCreate(!isCreate)}
-          >
-            Create
-          </button>
+          <button onClick={() => setIsCreate(!isCreate)}>Create</button>
         ) : (
-          <button onClick={() => deleteClock(clock.id)} className="py-1 px-2 border">
-            Delete
-          </button>
+          <button onClick={() => deleteClock(clock.id)}>Delete</button>
         )}
       </div>
       {isEdit && <ClockForm handleClock={updateClock} values={clock} />}

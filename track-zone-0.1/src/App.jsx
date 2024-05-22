@@ -4,7 +4,7 @@ import strGenerator from "./utils/strGenerator";
 import ClockList from "./components/clock-list/Index";
 
 const LOCAL_CLOCK_INIT = {
-  title: "My Clock",
+  title: "",
   timezone: "",
   offset: 0,
   date: null,
@@ -49,7 +49,12 @@ function App() {
         updateClock={updateLocalClock}
       />
       <hr />
-      <ClockList localDate={localClock.date} clocks={clocks} updateClock={updateClock} deleteClock={deleteClock} />
+      <ClockList
+        localDate={localClock.date}
+        clocks={clocks}
+        updateClock={updateClock}
+        deleteClock={deleteClock}
+      />
     </div>
   );
 }

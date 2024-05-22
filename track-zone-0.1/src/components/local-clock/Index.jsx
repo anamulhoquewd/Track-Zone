@@ -14,9 +14,11 @@ const LocalClock = ({ clock, updateClock, createClock }) => {
     });
   }, [date]);
 
+  if (!date) return null;
+
   return (
     <div>
-      {date && (
+      {
         <>
           <ClockDispaly
             title={clock.title}
@@ -31,7 +33,7 @@ const LocalClock = ({ clock, updateClock, createClock }) => {
             createClock={createClock}
           />
         </>
-      )}
+      }
     </div>
   );
 };

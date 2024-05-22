@@ -1,6 +1,11 @@
 import ClockListItem from "../clock-list-item/Index";
 
-const ClockList = ({ localDate, clocks, updateClock, deleteClock }) => {
+const ClockList = ({
+  localDate,
+  clocks,
+  updateClock,
+  deleteClock,
+}) => {
   return (
     <div>
       {clocks.length === 0 ? (
