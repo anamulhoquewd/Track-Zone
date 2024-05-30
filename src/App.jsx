@@ -4,7 +4,6 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 
 import { useState } from "react";
-import useClock from "./hooks/useClock";
 import LocaleClock from "./components/locale-clock/Index";
 import {
   Container,
@@ -27,6 +26,32 @@ const App = () => {
   const [theme, setTheme] = useState(true);
   const [localClock, setLocalClock] = useState({ ...LOCAL_CLOCK_INIT });
   const [clocks, setClocks] = useState([]);
+  const [events, setEvents] = useState({});
+
+  const createEvent = (event) => {
+    if (!events[event.clockId]) {
+      setEvents((prev) => ({
+        ...prev,
+        [event.clockId]: [event],
+      }));
+    } else {
+      setEvents((prev) => ({
+        ...prev,
+        [event.clockId]: [...prev[event.clockId], event],
+      }));
+    }
+  };
+
+  const deleteEvent = (id, cid) => {
+    const newEvents = Object.keys(events).filter((item) => item === cid);
+
+    const newEvent = events[newEvents].filter((item) => item.id !== id);
+
+    setEvents((prev) => ({
+      ...prev,
+      [newEvents]: newEvent,
+    }));
+  };
 
   const createClock = (data) => {
     data.id = idGenerator(6);
@@ -92,9 +117,12 @@ const App = () => {
         }}
       >
         <CLockList
+          createEvent={createEvent}
+          events={events}
           clocks={clocks}
           updateClock={updateClock}
           deleteClock={deleteClock}
+          deleteEvent={deleteEvent}
         />
       </Grid>
     </ThemeProvider>

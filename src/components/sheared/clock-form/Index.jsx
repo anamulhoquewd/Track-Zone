@@ -48,7 +48,7 @@ const ClockForm = ({
   };
 
   return (
-    <Card sx={{}}>
+    <Card>
       <form onSubmit={handleSubmit}>
         <FormGroup
           sx={{ display: "flex", flexDirection: "column", gap: 2, padding: 2 }}

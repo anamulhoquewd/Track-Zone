@@ -24,14 +24,15 @@ const ClockDispaly = ({
   handleTheme,
   createClock,
   deleteClock,
+  handEventOpen,
 }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [isCreate, setIsCreate] = useState(false);
 
-  const handleEditOpen = () => setIsEdit(true);
-  const handleEditClose = () => setIsEdit(false);
-  const handleCreateOpen = () => setIsCreate(true);
-  const handleCreateClose = () => setIsCreate(false);
+  const handlsEditOpen = () => setIsEdit(true);
+  const handlsEditClose = () => setIsEdit(false);
+  const handlsCreateOpen = () => setIsCreate(true);
+  const handlsCreateClose = () => setIsCreate(false);
 
   const timer = useTimer(date);
 
@@ -60,7 +61,7 @@ const ClockDispaly = ({
 
   return (
     <div>
-      <Card sx={{ width: 300, position: "relative" }}>
+      <Card sx={{ width: 300, position: "relative", wordWrap: "break-word" }}>
         {local &&
           (theme ? (
             <LightModeIcon
@@ -79,7 +80,7 @@ const ClockDispaly = ({
             {clock.title}
           </Typography>
 
-          <Typography sx={{}} variant="h4" fontWeight="bold">
+          <Typography variant="h4" fontWeight="bold">
             {timer.toLocaleTimeString()}
           </Typography>
 
@@ -97,10 +98,15 @@ const ClockDispaly = ({
             sx={{ paddingTop: 3 }}
             disableElevation
             variant="contained"
-            aria-label="Disabled button group"
+            aria-label="Basic button group"
           >
+            {!local && (
+              <Button onClick={handEventOpen} size="small" variant="contained">
+                Events
+              </Button>
+            )}
             <Button
-              onClick={handleEditOpen}
+              onClick={handlsEditOpen}
               size="small"
               variant="contained"
               sx={{}}
@@ -109,7 +115,7 @@ const ClockDispaly = ({
             </Button>
             {local ? (
               <Button
-                onClick={handleCreateOpen}
+                onClick={handlsCreateOpen}
                 size="small"
                 variant="contained"
                 sx={{}}
@@ -129,20 +135,20 @@ const ClockDispaly = ({
         </CardContent>
       </Card>
 
-      <Modal open={isEdit} onClose={handleEditClose}>
+      <Modal open={isEdit} onClose={handlsEditClose}>
         <Box sx={modalStyle}>
           <ClockForm
             values={clock}
             handleClock={updateClock}
             edit={true}
-            onClose={handleEditClose}
+            onClose={handlsEditClose}
           />
         </Box>
       </Modal>
 
-      <Modal open={isCreate} onClose={handleCreateClose}>
+      <Modal open={isCreate} onClose={handlsCreateClose}>
         <Box sx={modalStyle}>
-          <ClockForm handleClock={createClock} onClose={handleCreateClose} />
+          <ClockForm handleClock={createClock} onClose={handlsCreateClose} />
         </Box>
       </Modal>
     </div>
